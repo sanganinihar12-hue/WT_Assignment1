@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snaeland Travel</title>
+
+  <style>
+
+    :root{
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #0f96b0;
+      --accent-dark: #0c6f87;
+      --accent-2: #2b7a78;
+      --radius: 12px;
+      --shadow-sm: 0 6px 18px rgba(15,22,33,0.06);
+      --shadow-md: 0 12px 30px rgba(15,22,33,0.08);
+      --max-width: 1200px;
+      --transition: 220ms cubic-bezier(.2,.9,.3,1);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg);
+      color: #0f172a;
+      line-height:1.6;
+    }
+    img{max-width:100%;display:block;border-radius:var(--radius);}
+
+    /* ===== Navbar ===== */
+    .navbar{
+      background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+      position:sticky;
+      top:0;
+      z-index:1000;
+      box-shadow: var(--shadow-sm);
+    }
+    .navbar-inner{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:1rem 2rem;
+    }
+    .brand{
+      color:#fff;
+      font-weight:700;
+      font-size:1.2rem;
+      text-decoration:none;
+    }
+    .nav-links a{
+      color:#fff;
+      text-decoration:none;
+      margin-left:1.5rem;
+      font-weight:500;
+      transition:color var(--transition);
+    }
+    .nav-links a:hover{color:#ffcc00;}
+
+    /* ===== Hero ===== */
+    .hero{
+      position:relative;
+      height:80vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      text-align:center;
+      background:url("https://images.unsplash.com/photo-1501785888041-af3ef285b470") center/cover no-repeat;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.45);
+    }
+    .hero-content{
+      position:relative;
+      max-width:700px;
+      padding:2rem;
+    }
+    .hero h1{
+      font-size:2.4rem;
+      margin-bottom:.5rem;
+    }
+    .hero p{font-size:1.1rem;margin-bottom:1rem;}
+    .btn{
+      display:inline-block;
+      background:var(--accent-2);
+      color:#fff;
+      padding:.8rem 1.5rem;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      transition:background var(--transition), transform var(--transition);
+    }
+    .btn:hover{
+      background:var(--accent-dark);
+      transform:translateY(-3px);
+    }
+
+    /* ===== Sections ===== */
+    section{
+      max-width:var(--max-width);
+      margin:4rem auto;
+      background:var(--card);
+      padding:3rem 2rem;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-sm);
+    }
+    section h2{
+      text-align:center;
+      color:var(--accent-dark);
+      margin-bottom:1rem;
+      font-size:1.8rem;
+    }
+
+    /* ===== Intro ===== */
+    .intro p{
+      text-align:center;
+      max-width:800px;
+      margin:0 auto 2rem;
+      color:var(--muted);
+    }
+    .stats{
+      display:flex;
+      justify-content:center;
+      gap:2rem;
+      flex-wrap:wrap;
+    }
+    .stat{
+      text-align:center;
+    }
+    .stat h3{
+      color:var(--accent-2);
+      font-size:1.5rem;
+    }
+
+    /* ===== Destinations ===== */
+    .destinations .dest-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:1.5rem;
+      margin-top:2rem;
+    }
+    .dest{
+      overflow:hidden;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-sm);
+    }
+    .dest h3{
+      text-align:center;
+      padding:1rem;
+      background:#f8f9fa;
+      font-size:1.1rem;
+      color:#333;
+    }
+
+    /* ===== Gallery ===== */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:1.5rem;
+      margin-top:2rem;
+    }
+
+    /* ===== Highlight ===== */
+    .highlight-content{
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:2rem;
+    }
+    .highlight-content img{
+      flex:1 1 300px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-md);
+    }
+    .highlight-text{
+      flex:1 1 300px;
+    }
+    .highlight-text h3{
+      color:var(--accent-dark);
+      margin-bottom:.5rem;
+    }
+    .highlight-text p{color:var(--muted);margin-bottom:1rem;}
+
+    /* ===== Packages ===== */
+    .packages-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:1.5rem;
+      margin-top:2rem;
+    }
+    .pack{
+      overflow:hidden;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-sm);
+    }
+    .pack h3{
+      text-align:center;
+      padding:1rem;
+      background:#f8f9fa;
+      color:#333;
+      font-size:1.1rem;
+    }
+
+    /* ===== Footer ===== */
+    .footer{
+      background:linear-gradient(90deg,var(--accent),var(--accent-dark));
+      color:#fff;
+      text-align:center;
+      padding:3rem 1rem;
+      margin-top:4rem;
+    }
+    .footer p{margin-top:1rem;font-size:.95rem;color:#e0e0e0;}
+
+    /* ===== Responsive ===== */
+    @media (max-width:700px){
+      .hero h1{font-size:1.8rem;}
+      .hero p{font-size:1rem;}
+      section{margin:2rem 1rem;padding:2rem 1rem;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="#" class="brand">Snaeland Travel</a>
+      <div class="nav-links">
+        <a href="aboutus.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Hero Section ===== -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Weaving Your Dreams into Unforgettable Adventures</h1>
+      <p>Explore Iceland’s rugged beauty and vibrant culture.</p>
+      <a href="#" class="btn">Start Your Journey</a>
+    </div>
+  </header>
+
+  <!-- ===== Intro Section ===== -->
+  <section class="intro">
+    <h2>Our Story</h2>
+    <p>It all began with a single journey — a trip to the land of fire and ice that sparked a profound love for Iceland. From that spark, Snaeland Travel was born, turning dreams into unforgettable experiences.</p>
+    <div class="stats">
+      <div class="stat">
+        <h3>95%</h3>
+        <p>Happy Travelers</p>
+      </div>
+      <div class="stat">
+        <h3>72+</h3>
+        <p>Destinations</p>
+      </div>
+      <div class="stat">
+        <h3>250+</h3>
+        <p>Adventures</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Destinations ===== -->
+  <section class="destinations">
+    <h2>Adventure, Culture & Natural Wonders</h2>
+    <div class="dest-grid">
+      <div class="dest">
+        <img src="img1.jpg" alt="Destination 1">
+        <h3>Venice</h3>
+      </div>
+      <div class="dest">
+        <img src="img2.jpg" alt="Destination 2">
+        <h3>Reynisfjara Black Sand Beach</h3>
+      </div>
+      <div class="dest">
+        <img src="img3.jpg" alt="Destination 3">
+        <h3>Blue Lagoon, Iceland</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Gallery ===== -->
+  <section class="gallery">
+    <h2>Visual Journey Through the Lens</h2>
+    <div class="gallery-grid">
+      <img src="img4.jpg" alt="Gallery 1">
+      <img src="img5.jpg" alt="Gallery 2">
+    </div>
+  </section>
+
+  <!-- ===== Highlight ===== -->
+  <section class="highlight">
+    <div class="highlight-content">
+      <img src="img6.jpg" alt="Highlight">
+      <div class="highlight-text">
+        <h3>Santa Irina</h3>
+        <p>Secure your spot for an unforgettable journey through Iceland’s beauty and unique charms.</p>
+        <a href="#" class="btn">Book Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Packages ===== -->
+  <section class="packages">
+    <h2>Choose Your Next Destination</h2>
+    <div class="packages-grid">
+      <div class="pack">
+        <img src="img7.jpg" alt="Nusa Penida">
+        <h3>Nusa Penida, Bali</h3>
+      </div>
+      <div class="pack">
+        <img src="img8.jpg" alt="Namibia">
+        <h3>Namibia</h3>
+      </div>
+      <div class="pack">
+        <img src="img9.jpg" alt="Glacier Expedition">
+        <h3>Glacier Expedition</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <h2>Find the perfect trip for you and discover extraordinary adventures with us!</h2>
+    <a href="#" class="btn">Discover Now</a>
+    <p>© 2025 Snaeland Travel. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

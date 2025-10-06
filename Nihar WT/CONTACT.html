@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | WanderVista</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* === Base Reset === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom right, #d0f0f6, #f7f9fb);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* === Navbar === */
+    .navbar {
+      background: #0096c7;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 25px;
+      font-weight: 600;
+      font-size: 18px;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .navbar a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #fff;
+      transition: width 0.3s ease;
+    }
+    .navbar a:hover {
+      color: #f8f9fa;
+    }
+    .navbar a:hover::after {
+      width: 100%;
+    }
+
+    /* === Header === */
+    .contact-container {
+      text-align: center;
+      padding: 70px 20px 40px;
+      background: url("https://www.pexels.com/search/travel/") no-repeat center/cover;
+      
+      color: #fff;
+      position: relative;
+    }
+    .contact-container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+    }
+    .contact-container h1 {
+      position: relative;
+      z-index: 1;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+
+    /* === Section Cards === */
+    .section {
+      background: #fff;
+      margin: 40px auto;
+      padding: 40px;
+      max-width: 800px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .section h2 {
+      color: #0096c7;
+      font-size: 2rem;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    /* === Form === */
+    .contact-form label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      margin-top: 15px;
+      color: #333;
+      text-align: left;
+    }
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      transition: 0.3s ease;
+      background: #f5f9fa;
+    }
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      border-color: #0096c7;
+      box-shadow: 0 0 8px rgba(0,150,199,0.3);
+      background: #fff;
+    }
+    .contact-form textarea {
+      resize: none;
+      height: 120px;
+    }
+    .contact-form button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      background: linear-gradient(to right, #0096c7, #00b4d8);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .contact-form button:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(to right, #00b4d8, #0096c7);
+    }
+
+    /* === Info Section === */
+    .contact-info {
+      text-align: center;
+      line-height: 1.8;
+    }
+    .contact-info p {
+      font-size: 1rem;
+      color: #444;
+    }
+    .contact-info i {
+      color: #0096c7;
+      margin-right: 8px;
+    }
+    .contact-info h3 {
+      margin-top: 25px;
+      font-size: 1.3rem;
+      color: #0096c7;
+    }
+
+    /* === Social Icons === */
+    .social-icons {
+      margin-top: 15px;
+    }
+    .social-icons a {
+      display: inline-block;
+      margin: 0 12px;
+      font-size: 1.7rem;
+      color: #0096c7;
+      transition: 0.3s ease;
+    }
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #023e8a;
+    }
+
+    /* === Footer === */
+    footer {
+      background: #023e8a;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95rem;
+      margin-top: auto;
+      letter-spacing: 0.5px;
+    }
+
+    /* === Responsive === */
+    @media (max-width: 768px) {
+      .contact-container h1 {
+        font-size: 2.4rem;
+      }
+      .section {
+        padding: 25px;
+        margin: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="home.html">Home</a>
+    <a href="aboutus.html">About Us</a>
+  </div>
+
+  <!-- Header -->
+  <div class="contact-container">
+    <h1>Contact Us</h1>
+  </div>
+
+  <!-- Contact Form -->
+  <div class="section contact-form">
+    <h2>Get in Touch</h2>
+    <form action="https://formspree.io/f/mnngqeqk" method="POST">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender">
+        <option value="">Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+
+      <label for="country">Country</label>
+      <select id="country" name="country">
+        <option value="">Select Country</option>
+        <option>India</option>
+        <option>USA</option>
+        <option>UK</option>
+        <option>Canada</option>
+        <option>Australia</option>
+      </select>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Tell us how we can help you..."></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <!-- Info Section -->
+  <div class="section contact-info">
+    <h2>Reach Out to Us</h2>
+    <p><i class="fas fa-envelope"></i> Email: sanganinihar12@gmail.com</p>
+    <p><i class="fas fa-phone"></i> Phone: +91 9316557579</p>
+    <h3>Follow Our Journey</h3>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/mr.__nihar/"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/sangani-nihar-abb068389?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 WanderVista Travels — Explore Beyond Borders.
+  </footer>
+
+</body>
+</html>
